@@ -21,6 +21,15 @@
         <ellipse cx="3" cy="3" rx="1.5" ry="1.5"/>
       </g>
     </pattern>
+
+    <pattern id="playerTemplate" patternUnits="userSpaceOnUse" width="2" height="2" patternTransform="scale(4)">
+      <g fill="#91BD15">
+        <rect width="1" height="2" x="0" y="0" fill="#77280a" />
+        <rect width="1" height="2" x="1" y="0" fill="#cc6b1c" />
+      </g>
+    </pattern>
+
+
   </defs>
 
   <rect id="background" data-bind="attr: { width: width, height: height}"/>
@@ -29,6 +38,18 @@
   <g id="ball">
       <ellipse fill="url(#ballBackground)" id="ballBackground" cx="300" cy="80" data-bind="attr: { rx: r, ry: r, cx: x, cy: y }"/>
       <ellipse fill="url(#ovalTemplate)"  id="ball" cx="300" cy="80" data-bind="attr: { rx: r, ry: r, cx: x, cy: y }"/>
+  </g>
+  <!-- /ko -->
+
+  <!-- ko with: player2 -->
+  <g id="player2">
+    <rect id="player2" fill="url(#playerTemplate)" data-bind="attr: {height: height, width: width, x: x, y: y}"></rect>
+  </g>
+  <!-- /ko -->
+
+  <!-- ko with: player1 -->
+  <g id="player1">
+    <rect id="player2" fill="url(#playerTemplate)" data-bind="attr: {height: height, width: width, x: x, y: y}"></rect>
   </g>
   <!-- /ko -->
 </svg>
