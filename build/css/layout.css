@@ -1,0 +1,20 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+/* line 6, layout.css.sass */
+body h1, body h3 {
+  color: #2493ca;
+  margin: 0;
+  text-align: center; }
+/* line 10, layout.css.sass */
+body h1 {
+  font-size: 3em;
+  font-family: "Lobster", cursive;
+  text-shadow: -1px 0 #91bd15, 0 1px #91bd15, 1px 0 #91bd15, 0 -1px #91bd15; }
+/* line 14, layout.css.sass */
+body h3 {
+  font-size: 1em;
+  font-style: italic; }
+
+/* line 18, layout.css.sass */
+.content {
+  width: 600px;
+  margin: 0 auto; }
