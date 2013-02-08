@@ -36,6 +36,12 @@ $(function(){
             self.x(x + self.v.dx);
             self.y(y + self.v.dy);
         }
+        this.include = function(x,y) {
+            var dx = x - self.x();
+            var dy = y - self.y();
+
+            return dx*dx + dy*dy < self.r * self.r ;
+        }
     }
 
     function Player(options) {
@@ -63,7 +69,14 @@ $(function(){
                 if (self.k * self.y + ball.r + ((position == 'up') ? self.height : 0) > self.k * ball.y()) {
                     ball.v.dy = - ball.v.dy;
                 }
+            } else if (self.sideCollision(ball)) {
+                ball.v.dy = -ball.v.dy;
+                ball.v.dx = -ball.v.dx;
             }
+        }
+        this.sideCollision = function (ball) {
+            return ball.include(self.x(), self.y) ||
+                   ball.include(self.x() + self.width, self.y);
         }
         if (computer) {
             this.defendFrom = function(ball){
@@ -107,7 +120,7 @@ $(function(){
         this.width   = w;
         this.height  = h;
 
-        this.ball    = new Ball(w/2, h/2, 20, new v(5, 2.5));
+        this.ball    = new Ball(w/2, h/2, 20, new v(5, 3));
         this.player1    = new Player({position: 'up', computer: true});
         this.player2    = new Player({position: 'down'});
         this.leftWall   = new Wall(0, 'left');
@@ -120,7 +133,7 @@ $(function(){
             self.ball.x(self.width/2);
             self.ball.y(self.height/2);
             if (self.interval != 0) { clearInterval(self.interval); self.interval = 0; }
-            self.interval = setInterval(self.tick, 30);
+            self.interval = setInterval(self.tick, 20);
         }
         this.tick = function() {
             var ball = self.ball;
